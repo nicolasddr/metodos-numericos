@@ -20,9 +20,9 @@ num_iter = 0
 # Iterações
 while(e == False):
     num_iter += 1
-
-    valor_derivada = derivada.subs(x, pontoAtual)  # Calcula o valor da derivada no ponto atual 
-    valor_funcao = funcao.subs(x, pontoAtual) # Calcula o valor da função no ponto atual 
+    print(num_iter)
+    valor_derivada = derivada.subs(x, pontoAtual).evalf()  # Calcula o valor da derivada no ponto atual 
+    valor_funcao = funcao.subs(x, pontoAtual).evalf() # Calcula o valor da função no ponto atual 
 
     # Fórmula do Método da Secante
     novoPonto = ((pontoAnterior*funcao.subs(x, pontoAtual)) - (pontoAtual*funcao.subs(x, pontoAnterior)))/(funcao.subs(x, pontoAtual) - funcao.subs(x, pontoAnterior))
