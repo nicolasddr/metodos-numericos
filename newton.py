@@ -13,9 +13,12 @@ e = False # Se o erro está abaixo do erro desejado, então é True. Se o erro f
 pontoAtual = pontoInicial
 
 derivada = sp.diff(funcao, x) # sp.diff -> Deriva a função na variável x
+num_iter = 0
 
 # Iterações
 while(e == False):
+    num_iter += 1
+    
     valor_derivada = derivada.subs(x, pontoAtual).evalf() # Calcula o valor da derivada no ponto atual 
     valor_funcao = funcao.subs(x, pontoAtual).evalf() # Calcula o valor da função no ponto atual
 
@@ -28,6 +31,6 @@ while(e == False):
 
     pontoAtual = novoPonto
 
-print(f'ponto atual: {pontoAtual} e erro de {erroAtual}')
+print(f'{num_iter} iterações. Ponto final: {pontoAtual} e erro de {erroAtual}')
     
 

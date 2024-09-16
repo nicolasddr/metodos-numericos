@@ -15,9 +15,12 @@ pontoAnterior = pontoInicial
 pontoAtual = pontoInicial2
 
 derivada = sp.diff(funcao, x) # sp.diff -> Deriva a função na variável x
+num_iter = 0
 
 # Iterações
 while(e == False):
+    num_iter += 1
+
     valor_derivada = derivada.subs(x, pontoAtual)  # Calcula o valor da derivada no ponto atual 
     valor_funcao = funcao.subs(x, pontoAtual) # Calcula o valor da função no ponto atual 
 
@@ -32,6 +35,7 @@ while(e == False):
     pontoAnterior = pontoAtual
     pontoAtual = novoPonto
 
-print(f'ponto atual: {round(pontoAtual, 4)} e erro de {round(erroAtual, 4)}')
+print(f'{num_iter} iterações. Ponto final: {pontoAtual} e erro de {erroAtual}')
+
     
 

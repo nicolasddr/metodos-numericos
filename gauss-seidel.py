@@ -44,6 +44,7 @@ e = False   # Se o erro está abaixo do erro desejado, então é True. Se o erro
 # Iterações
 while(e != True):
     num_iter += 1
+    
     x_anterior = x.copy() # Copia e salva a aproximação anterior para calcular o erro
     for k in range(0,n):
         somatorio = matrizB[k] # somatorio recebe o 'b' da linha k
