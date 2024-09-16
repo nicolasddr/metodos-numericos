@@ -14,26 +14,30 @@ e = False  # Se o erro está abaixo do erro desejado, então é True. Se o erro 
 pontoAnterior = pontoInicial
 pontoAtual = pontoInicial2
 
-derivada = sp.diff(funcao, x) # sp.diff -> Deriva a função na variável x
 num_iter = 0
 
 # Iterações
 while(e == False):
     num_iter += 1
     print(num_iter)
-    valor_derivada = derivada.subs(x, pontoAtual).evalf()  # Calcula o valor da derivada no ponto atual 
-    valor_funcao = funcao.subs(x, pontoAtual).evalf() # Calcula o valor da função no ponto atual 
+    valor_funcao_anterior = funcao.subs(x, pontoAnterior).evalf() # Calcula o valor da função no ponto anterior 
+    valor_funcao_atual = funcao.subs(x, pontoAtual).evalf() # Calcula o valor da função no ponto atual 
+    print('Passou o valor')
+
 
     # Fórmula do Método da Secante
-    novoPonto = ((pontoAnterior*funcao.subs(x, pontoAtual)) - (pontoAtual*funcao.subs(x, pontoAnterior)))/(funcao.subs(x, pontoAtual) - funcao.subs(x, pontoAnterior))
+    novoPonto = ((pontoAnterior*valor_funcao_atual) - (pontoAtual*valor_funcao_anterior))/(valor_funcao_atual - valor_funcao_anterior)
+    print('Passou a formula')
 
     # Calculo do erro
     erroAtual = abs((novoPonto - pontoAtual)/novoPonto)
+    print('Passou o calculo do erro')
     if(erroAtual < erroDesejado):  # Se o erro for menor que o erro desejado, então 'e' recebe 'True' e as iterações param
         e = True
-
+    print('Passou o if do erro')
     pontoAnterior = pontoAtual
     pontoAtual = novoPonto
+    print('Passou tudo')
 
 print(f'{num_iter} iterações. Ponto final: {pontoAtual} e erro de {erroAtual}')
 
